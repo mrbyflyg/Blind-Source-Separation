@@ -1,0 +1,16 @@
+This is the data corresponding to the Blind Source Separation project for 11755 F23.
+You are provided with 3 .mat files. These can be read in MATLAB or python (using scipy/mat73 libraries)
+Each mat file contains HDEMG data from the Tibialis anterior muscle (close to shin). The data corresponds to
+participants holding a force level (steady force 1) and ramping up the force level (increasing force 1 and
+increasing force 2). You have to identify the number of unique sources (motor units) for each of these conditions.
+
+Each mat file has following 2 arrays:
+File
+-	Out_mat: a 64 x # of samples array, with the time series data corresponding to the HDEMG signals
+-	Grid_crds: a 64 x 2 array, with the spatial location of each electrode, the unit is in mm. This is useful
+if you are planning to incorporate spatial filters in your method.
+
+The following piece of literature may prove helpful, 
+Holobar, Ales, and Damjan Zazula. "Multichannel blind source separation using convolution kernel compensation."
+IEEE Transactions on Signal Processing 55.9 (2007): 4487-4496.
+https://ieeexplore.ieee.org/abstract/document/4291854
