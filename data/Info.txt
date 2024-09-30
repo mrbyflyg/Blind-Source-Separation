@@ -14,36 +14,3 @@ The following piece of literature may prove helpful,
 Holobar, Ales, and Damjan Zazula. "Multichannel blind source separation using convolution kernel compensation."
 IEEE Transactions on Signal Processing 55.9 (2007): 4487-4496.
 https://ieeexplore.ieee.org/abstract/document/4291854
-
-
-<build_depend>rclpy</build_depend>
-  <exec_depend>rclpy</exec_depend>
-  <exec_depend>geometry_msgs</exec_depend>
-
-'talker_node = talker.talker_node:main',
-
-import rclpy
-from rclpy.node import Node
-from geometry_msgs.msg import PoseStamped
-
-class ArucoLocalizationNode(Node):
-    def __init__(self):
-        super().__init__('aruco_localization_node')
-        self.subscription = self.create_subscription(
-            PoseStamped,
-            'aruco_pose',
-            self.listener_callback,
-            10)
-        self.subscription  # prevent unused variable warning
-        self.get_logger().info('ArucoLocalizationNode has been started.')
-
-    def listener_callback(self, msg):
-        self.get_logger().info(f'Received pose message:\n{msg}')
-
-def main(args=None):
-    rclpy.init(args=args)
-    aruco_localization_node = ArucoLocalizationNode()
-    rclpy.spin(aruco_localization_node)
-    aruco_localization_node.destroy_node()
-    rclpy.shutdown()
-    
